@@ -1,2 +1,2 @@
 # Special Problems
-Individual probjects.
+Individual projects.
