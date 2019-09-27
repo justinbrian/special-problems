@@ -5,7 +5,7 @@
 /* basic elements */
 
 body {
-	background: #B61E3D url(/img/bkgd.jpg);
+	background: #B61E3D url(img/bkgd.jpg);
 	font: 12px/16px Georgia, "Times New Roman", Times, serif;
 	color: #390404;
 	margin: 0px;
@@ -48,7 +48,7 @@ a:hover, a:active {
 }
 
 .page-wrapper {
-	background: #ffc url(/img/mid2.jpg) repeat-y center;
+	background: #ffc url(img/mid2.jpg) repeat-y center;
 	position: absolute;
 	left: 50%;
 	width: 760px;
@@ -56,7 +56,7 @@ a:hover, a:active {
 }
 .intro {
 	margin: 0px;
-	background: url(/img/top2.jpg) no-repeat center top;
+	background: url(img/top2.jpg) no-repeat center top;
 	padding-top: 186px;
 }
 header h1,
@@ -80,7 +80,7 @@ header h2 {
 	margin-left: 300px;
 }	
 .supporting p:nth-child(6){
-	background: url(/img/line.jpg) no-repeat center bottom;
+	background: url(img/line.jpg) no-repeat center bottom;
 	margin-right: -80px;
 	margin-left: -300px;
 	margin-top: 30px;
@@ -88,7 +88,7 @@ header h2 {
 	text-align: center;
 }		
 footer {
-	background: url(/img/bot2.jpg) no-repeat center bottom;
+	background: url(img/bot2.jpg) no-repeat center bottom;
 	margin-right: -80px;
 	margin-left: -300px;
 	height: 110px;
@@ -102,7 +102,7 @@ footer a:link, footer a:visited {
 
 /* sidelinks styles */
 .sidebar {
- 	background: url(/img/b5.jpg) no-repeat center bottom;
+ 	background: url(img/b5.jpg) no-repeat center bottom;
  	padding-bottom: 150px;
 	width: 195px;
 	position: absolute;
@@ -117,7 +117,7 @@ footer a:link, footer a:visited {
 	letter-spacing: 0.1em;
 }	
 .sidebar h3.select {
-	background: url(/img/navigation.png) no-repeat center top;
+	background: url(img/navigation.png) no-repeat center top;
 	padding-top: 115px;
 	font-style: italic;
 	text-transform: lowercase;
@@ -125,12 +125,12 @@ footer a:link, footer a:visited {
 }
 .sidebar h3.archives { 
 	margin-top: 100px;
-	background: url(/img/archives.png) no-repeat center top;
+	background: url(img/archives.png) no-repeat center top;
 	padding-top: 110px;
 }
 .sidebar h3.resources { 
 	margin-top: 100px;
-	background: url(/img/resources.png) no-repeat center top;
+	background: url(img/resources.png) no-repeat center top;
 	padding-top: 105px;
 }
 .sidebar ul {
@@ -140,7 +140,7 @@ footer a:link, footer a:visited {
 	text-align: center;
 }
 .sidebar li {
- 	background: url(/img/listline.gif) no-repeat center bottom;
+ 	background: url(img/listline.gif) no-repeat center bottom;
  	padding-bottom: 15px;
 }
 .sidebar .design-selection a {
