@@ -1,0 +1,49 @@
+/* ------------------------------------------------ */
+/* Custom page CSS for pie.html. */
+
+body {
+	background-color: #ffffff;
+	font-family: Georgia, Garamond, serif;
+	color: #404040;
+}
+
+nav li {
+	display: inline;
+	list-style-type: none;
+  }
+
+a {
+	color: #A4A400;
+}
+
+div {
+	color: #A4A400;
+	font-family: Arial;
+	font-size: 25px;
+	background-color: #F0F0F0;
+	text-decoration: underline;
+	text-align: center;
+}
+
+header {
+	color: #A4A400;
+	font-family: Arial;
+	font-size: 18px;
+	background-color: #F0F0F0;
+	text-decoration: underline;
+}
+
+.comment {
+	background-color: #FFFFA8;
+	font-style: italic;
+	width:90%;
+	margin-left: 15px auto 15px;
+	text-align: left;
+}
+
+blockquote.comment {
+	background-color: #FFFFA8;
+	font-style: italic;
+	width:80%;  
+	margin:15px auto 15px;
+}
