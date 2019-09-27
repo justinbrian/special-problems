@@ -1,1 +1,2 @@
-# special-problems
+# Special Problems
+Individual probjects.
