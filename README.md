@@ -1,2 +1,2 @@
-# Special Problems
+# CSC199 - Special Problems
 Individual projects.
