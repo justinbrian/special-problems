@@ -175,10 +175,10 @@ switch($page){
 		
 		<div id="validate">
 			<p><a href="https://webster.cs.washington.edu/validate-html.php">
-			<img src="img/movie/w3c-html.png" alt="HTML Validator" /></a><br />
+			<img src="img/w3c-html.png" alt="HTML Validator" /></a><br />
 
 			<a href="https://webster.cs.washington.edu/validate-css.php">
-			<img src="img/movie/w3c-css.png" alt="CSS Validator" /></a></p>
+			<img src="img/w3c-css.png" alt="CSS Validator" /></a></p>
 		</div>
 	</body>
 </html>
