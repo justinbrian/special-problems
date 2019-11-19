@@ -1,6 +1,5 @@
 <!doctype html>
 
-
 <?php
 // Get current movie title int the html title.
 $page = isset($_GET['menu'])?$_GET['menu']:'movie';
@@ -13,27 +12,27 @@ switch($page){
 	case 'movie':
 		$movie = $_GET["film"];
 		$title = 'Mortal Kombat';
-        $content = 'movie.php?film=mortalkombat';
+        $content = 'movie.php';
 		break;
 	case 'movie1':
 		$movie = $_GET["film"];
 		$title = 'Princess Bride';
-		$content = 'movie.php?film=princessbride';
+		$content = 'movie.php';
 		break;
 	case 'movie2':
 		$movie = $_GET["film"];
 		$title = 'Teenage Mutant Ninja Turtles';
-		$content = 'movie.php?film=tmnt';
+		$content = 'movie.php';
 		break;
 	case 'movie3':
 		$movie = $_GET["film"];
 		$title = 'Teenage Mutant Ninja Turtles 2';
-		$content = 'movie.php?film=tmnt2';
+		$content = 'movie.php';
 		break;
 	case 'movie4':
 		$movie = $_GET["film"];
 		$title = 'Joker';
-		$content = 'movie.php?film=joker';
+		$content = 'movie.php';
 		break;
 }
 // The following html could be in a separate file and included, eg layout.php.
@@ -42,7 +41,7 @@ switch($page){
 <html>
 	
 	<head>
-		<title>Rancid Tomatoes - <?php echo $title;?></title>
+		<title>Rancid Tomatoes - <?php echo $movie;?></title>
 		<meta charset="utf-8" />
 		<link href="css/movie.css" type="text/css" rel="stylesheet" />
 		<link rel="icon" type="image/gif" href="img/movie/rotten.gif" />
@@ -106,7 +105,7 @@ switch($page){
 				$raw_review[$count] = file_get_contents("$filename");
 				$count++;
 			}
-			for ($i=0;$i<$count;$i++)
+			for ($i = 0; $i < $count; $i++)
 			{
 				$review = explode("\n", $raw_review[$i]);
 				displayReview($review,$i);
@@ -128,7 +127,8 @@ switch($page){
 				 		{$review[2]}<br />
 				 		{$review[3]}
 				 </p>";
-			if($num == ceil($count/2)){
+			if($num == ceil($count/2))
+			{
 			echo "</div>
 				  <div class='column'>";
 			}
