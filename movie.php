@@ -1,211 +1,134 @@
 <!doctype html>
+<html>
+	
+	<head>
+		<title>Rancid Tomatoes</title>
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Rancid Tomatoes</title>
+		<meta charset="utf-8" />
+		<link href="css/movie.css" type="text/css" rel="stylesheet" />
+		<link rel="icon" type="image/gif" href="img/movie/rotten.gif" />
+		
+		<!-- 
+		Stephen Brannen
+		CSC 365 Fall 2013
+		Missouri State University
+		Homework 3
+		tmnt.html
+		Eccentric: \\eccentric\class\csc365\001\brannen01\HW3
+		Personal Site: http://csc.stephenbrannen.com/HW3/movie.php
+		-->
+		
+	</head>
+	
+	<?php
+		//variables
+		$movie = $_GET["film"];
+		$raw_info = file_get_contents("$movie/info.txt");
+		$raw_overview = file_get_contents("$movie/overview.txt");
+		$info = explode("\n", $raw_info);
+		$overview = explode("\n", $raw_overview);
+		$count = 0;
+		$freshness = "";
+		$freshAlt = "";
+		
+		//this sets the value for freshness and freshAlt
+		if (intval($info[2]) >= 60){
+				$freshness = "img/movie/freshbig.png";
+				$freshAlt = "Fresh";
+			}
+			else{
+				$freshness = "img/movie/rottenbig.png";
+				$freshAlt = "Rotten";
+			}
+		
+		//functions
+		
+		//this function displays the overview sidebar 
+		function sidebar(){
+			global $overview;
+			foreach($overview as $row){
+				$row = explode(":", $row);
+				echo "<dt>{$row[0]}</dt><dd>{$row[1]}</dd>";
+			}
+		}
+		
+		//this function gets the review information
+		function getReviews(){
+			global $movie;
+			global $count;
+			$raw_review = array();
+			foreach (glob("$movie/review*.txt") as $filename){
+				$raw_review[$count] = file_get_contents("$filename");
+				$count++;
+			}
+			for ($i=0;$i<$count;$i++){
+				$review = explode("\n", $raw_review[$i]);
+				displayReview($review,$i);
+			}
+		}
+		
+		//this function displays the review information
+		function displayReview($review,$num){
+			global $count;
+			$num++;
+			$review[1] = strtolower($review[1]);
+			echo "<p class='review'>
+						<img src='{$review[1]}.gif' alt='{$review[1]}' />
+						<q>{$review[0]}</q>
+				 </p>
+				 <p class='reviewer'>
+				 		<img src='img/movie/critic.gif' alt='Critic' />
+				 		{$review[2]}<br />
+				 		{$review[3]}
+				 </p>";
+			if($num == ceil($count/2)){
+			echo "</div>
+				  <div class='column'>";
+			}
+		}			
+	?>
 
-    <link href="css/movie.css" type="text/css" rel="stylesheet"/>
-    <link href="img/movie/rotten.gif" type="image/gif" rel="icon"/>
-</head>
+	<body>
+		<div class="banner">
+			<img src="img/movie/banner.png" alt="Rancid Tomatoes" />
+		</div>
 
-<?php
-/*
- * Query parameter that allows user to pass the name of the movie from the web browser.
- * Example: movie.php?film=mymovie
- * Available movies: mymovie, fightclub, mortalkombat, princessbride, tmnt, tmnt2
- */
-$movie = $_GET["film"];
+		<h1 id="title"><?echo "$info[0] ($info[1])";?></h1>
+		
+		<div id="overall"> <!-- Start of main section -->
+		
+			<div id="right"> <!-- Start of right section -->
+				<div>
+					<img id="overview_img" src="<?=$movie?>/overview.png" alt="general overview" />
+				</div>
 
-/*
- * Reads movie info.txt into a an string array
- * $movie is used to define relative path.
- * FILE_IGNORE_NEW_LINES MUST be used in order to omit \n
- * $movieInfo[0] Movie Title
- * $movieInfo[1] Movie Year
- * $movieInfo[2] Movie Score
- */
-$movieInfo = file("$movie/info.txt", FILE_IGNORE_NEW_LINES);
+				<dl>
+					<?php sidebar();?>
+				</dl>
 
-/*
- * Reads movie overview.txt into an string array
- * $movie is used to define relative path.
- * $movieOverview[0] Overview Subtitle. Example: STARING, DIRECTOR, PRODUCER ...
- * $movieOverview[1] Overview Contents
- */
-$movieOverview = file("$movie/overview.txt", FILE_IGNORE_NEW_LINES);
+			</div> <!-- End of right section -->
 
-/*
- * Reads the paths of all files matching the format review*.txt into an string array
- * Example: review1.txt, review2.txt, review3.txt ...
- * $movie is used to define relative path.
- */
-$movieReviewPath = glob("$movie/review*.txt");
+			<div id="left"> <!-- Start of left section -->
 
-/*Alternative way of reading contents.
-file_get_contents stores the text into a string.
-$movieInfo = explode("\n", file_get_contents("$movie/info.txt"));
-$movieOverview = explode("\n", file_get_contents("$movie/overview.txt"));*/
+				<div id="score">
+					<img id="rotten" src="<?=$freshness?>" alt="<?=$freshAlt?>" />
+					<?=$info[2]?>%
+				</div>
+				
+				<div class="column"> <!-- Start of Reviews -->
+					<?php getReviews();?>				
+				</div> <!-- End of reviews -->
+				<div id="aftercolumns"></div>
 
-?>
+			</div> <!-- End of left section -->
 
+				<p id="footer">(1- <?=$count?>) of <?=$count?></p>
+		</div> <!-- End of main section -->
+		
+		<div id="validate">
+						<p><a href="https://webster.cs.washington.edu/validate-html.php"><img src="img/movie/w3c-html.png" alt="HTML Validator" /></a><br />
+<a href="https://webster.cs.washington.edu/validate-css.php"><img src="img/movie/w3c-css.png" alt="CSS Validator" /></a></p>
 
-<body>
-<div id="bodyHeader">
-    <img src="img/movie/banner.png" alt="Rancid Tomatoes"/>
-</div>
-
-<!--
-In PHP ?= used for printing the return value; ($var value)
-IN PHP ?php used for calling only; $var;
-Implemented functions are void, they only print HTML code, so they must be called only -->
-
-<h1><?= $movieInfo[0] ?> (<?= $movieInfo[1] ?>)</h1>
-
-<!-- each section tag must be specified by the developer -->
-
-<div id="main">
-    <div id="overviewSection">
-        <div><img src="<?= $movie ?>/overview.png" alt='general overview'/></div>
-        <?php printMovieOverviewList($movieOverview); ?>
-    </div>
-
-    <div id="reviewSection">
-        <?php printMovieReviewScore($movieInfo); ?>
-        <?php printMovieReviewsTwoColumns($movieReviewPath); ?>
-    </div>
-
-    <p id="reviewCount">(1- <?= count($movieReviewPath); ?>) of <?= count($movieReviewPath); ?></p>
-</div>
-
-<div id="w3c">
-    <a href="https://validator.w3.org/check/referer">
-        <img src="img/w3c-html.png" alt="Valid HTML"/></a>
-    <a href="https://jigsaw.w3.org/css-validator/check/referer">
-        <img src="img/w3c-css.png" alt="Valid CSS"/></a>
-</div>
-</body>
+		</div>
+	</body>
 </html>
-
-
-<!--PHP FUNCTIONS-->
-<?php
-/**Prints the movie overview to the HTML document
- * Appropriate div tags MUST be written by the developer to separate sections.
- * @param array $movieOverviewIn String array containing the movie overview.
- */
-function printMovieOverviewList(array $movieOverviewIn)
-{
-    ?>
-
-    <dl>
-
-
-        <?php foreach ($movieOverviewIn as $movieOverviewLine) {
-            //Splits each movieOverview element into more sub elements.The delimiter is :.
-            $movieOverviewLine = explode(":", $movieOverviewLine);
-
-            ?>
-
-            <dt><?= $movieOverviewLine[0] ?></dt>
-            <dd><?= $movieOverviewLine[1] ?></dd>
-
-        <?php } ?>
-    </dl>
-<?php } ?>
-
-<?php
-/**Prints the movie review score to the HTML document
- * Appropriate div tags MUST be written by the developer to separate sections.
- * @param array $movieInfoIn String array containing the movie information.
- */
-function printMovieReviewScore(array $movieInfoIn)
-{
-    ?>
-
-    <div id="reviewSectionHeader">
-
-        <?php
-        //determines if movie score is greater than 60
-        //intval() converts string to int
-        if (intval($movieInfoIn[2]) >= 60) {
-            ?>
-
-            <img src="img/movie/freshbig.png" alt="Fresh"/>
-            <?= $movieInfoIn[2] ?>%
-
-            <?php
-        } else {
-            ?>
-            <img src="img/movie/rottenbig.png" alt="Rotten"/>
-            <?= $movieInfoIn[2] ?>%
-
-            <?php
-        } ?>
-    </div>
-    <?php
-} ?>
-
-<?php
-/**Prints the movie reviews in two columns to the HTML document
- * Appropriate div tags MUST be written by the developer to separate sections.
- * @param array $movieReviewPathIn String array containing the movie directories.
- */
-function printMovieReviewsTwoColumns(array $movieReviewPathIn)
-{
-
-    //defines the first index value for the array to 0
-    $low = 0;
-
-    //defines the last index value for the array to half size of the array + 1
-    //ceil() rounds fractions up
-    $high = ceil(count($movieReviewPathIn) / 2);
-
-    // creates two columns
-    for ($i = 0; $i < 2; $i++) {
-        ?>
-
-        <div class='reviewSectionColumn'>
-
-
-            <?php
-            for ($j = $low; $j < $high; $j++) {
-
-                //Splits each review element into sub elements. The delimiter is the new line
-                $reviewLine = file("$movieReviewPathIn[$j]", FILE_IGNORE_NEW_LINES);
-
-                //MUST be lower case to match string value of file
-                $reviewLine[1] = strtolower($reviewLine[1]);
-                ?>
-
-                <p class="reviewSectionText">
-                    <img src="img/movie/<?= $reviewLine[1] ?>.gif" alt="<?= $reviewLine[1] ?>"/>
-                    <q><?= $reviewLine[0] ?> </q>
-                </p>
-                <p class='reviewSectionName'>
-                    <img src='img/movie/critic.gif' alt='Critic'/>
-                    <?= $reviewLine[2] ?><br/>
-                    <?= $reviewLine[3] ?>
-                </p>
-
-
-                <?php
-            }
-            ?>
-        </div>
-
-        <?php
-        //redefines first index value for array to the latest value of $j
-        $low = $j;
-
-        //redefines last index value for array to the array size
-        $high = count($movieReviewPathIn);
-    } ?>
-    <?php
-}
-
-?>
-<!-- PHP FUNCTIONS END-->
