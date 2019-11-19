@@ -1,166 +1,150 @@
 /*
-General settings for the body of the page
+Stephen Brannen
+CSC 365 Fall 2019
+Missouri State University
+Homework 2
+
+movie.css
+Eccentric: \\eccentric\class\csc365\001\brannen01\HW2
+Personal Site: http://people.missouristate.edu/brannen01/HW2/tmnt.html
 */
+
 body {
-    background: url("img/movie/background.png") repeat;
-    font-size: 8pt;
-    font-family: Verdana, Tahoma, sans-serif;
-    margin: 0px;
+	background-image: url(../img/movie/background.png);
+	margin: 0px;
+	padding: 0px;
+	font-size: 8pt;
+	font-family: Verdana, Tahoma, sans-serif;
 }
 
-/*
-Banner on top of the page
-*/
-#bodyHeader { /*image banner*/
-    background: url("img/movie/bannerbg.png") repeat-x;
-    height: 50px;
-    text-align: center;
+.banner {
+	background-image: url(../img/movie/bannerbg.png);
+	background-repeat: repeat-x;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	height: 50px;
 }
 
-/*
-Tittle of the page.
-*/
-h1 {
-    font-size: 24pt;
-    text-shadow: 3px 3px #999999;
-    text-align: center;
-    font-weight: bold;
-    /*font-family already applied in body*/
+#title {
+	text-align: center;
+	font-size: 24pt;
+	font-weight: bold;
+	font-family: Tahoma, Verdana, sans-serif;
+	text-shadow: 3px 3px #999999;
 }
 
-/*
-Main section of the page, the square shape, containing all elements.
-*/
-#main { /*square contains all sections*/
-    width: 800px;
-    position: relative;
-    border: gray solid 4px;
-    border-radius: 20px;
-    overflow: hidden; /*fits to contain all elements inside*/
-    margin: auto; /*align center of page*/
+#overall {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 4px solid gray;
+	border-radius: 20px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	background-color: #A2B964;
+	overflow: hidden;
 }
 
-/*
-Review section of the page. It is located at the left side of the page.
-*/
-#reviewSection { /*left side*/
-    width: 550px;
-    float: left; /*moves the elment to the left*/
-    /*background-image already on body*/
-    overflow: hidden; /*fits to contain all elements inside*/
+#left {
+	width: 550px;
+	background-image: url(../img/movie/background.png);
 }
 
-/*
-Banner on top of the review section.
-*/
-#reviewSectionHeader {
-    background: url("img/movie/rbg.png") repeat-x;
-    vertical-align: middle; /*vertically aligns the text*/
-    font-weight: bold;
-    color: red;
-    font-size: 48pt;
-    height: 83px;
+#score {
+	background-image: url(../img/movie/rbg.png);
+	height: 83px;
+	font-size: 48pt;
+	font-weight: bold;
+	color: red;
+	margin-top: auto;
+	margin-bottom: auto;
 }
 
-/*
-Format for the image on the review banner 
-*/
-#reviewSectionHeader img {
-    float: left; /*necessary to properly align text vertically*/
+#score img {
+	float: left;
+	padding-right: 5px;
 }
 
-/*
-Format for each column. Allows to divides the review into columns.
-*/
-.reviewSectionColumn { /*columns of reviews*/
-    float: left;
-    width: 47%; /*each columm occupies 47% of the width*/
-    margin-left: 2%; /*separation between columns*/
+.column {
+	float: left;
+	width: 50%;
 }
 
-/*
-Format for all images inside a columm.
-*/
-.reviewSectionColumn img {
-    float: left;
-    margin-right: 5px; /*horizontal space between text to its right*/
-    /*text-wrap: none; omits line break* NOT necessary since the HTML for this
-    section does not contain line breaks.*/
+#aftercolumns {
+	clear:both;
 }
 
-/*
-Format for the text of each review.
-*/
-.reviewSectionText {
-    font-weight: bold;
-    font-size: 8pt;
-    background-color: #e8dc9b;
-    border: gray solid 2px;
-    border-radius: 10px;
-    overflow: hidden;
-    padding: 8px;
+.review {
+	font-size: 8pt;
+	font-weight: bold;
+	background-color: #E8DC9B;
+	border: 2px solid gray;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	padding: 8px;
+	margin: 8px;
+	overflow: auto;
 }
 
-/*
-Format for the name of the reviewer.
-*/
-.reviewSectionName { /*reviewer*/
-    font-style: italic;
-    overflow: hidden; /*fit elements inside section*/
-    margin-bottom: 20pt;
-    /*text-wrap: none; omits line break*. NOT necessary since increasing 
-    bottom margin allows to fit the image without further properties.*/
+.review img {
+	float: left;
+	padding-right: 5px;
 }
 
-.reviewSectionName::first-line {
-    font-style: normal;
+.reviewer {
+	padding-bottom: 20pt;
+	font-style: italic;
+	padding-left: 10px;
 }
 
-/*
-Contains information about the movie. Located at the right side of the page.
-*/
-#overviewSection { /*right side*/
-    background-color: #a2b964;
-    width: 250px;
-    font-size: 8pt;
-    font-family: Arial, sans-serif;
-    float: right; /*position the section to the right*/
+.reviewer img {
+	float: left;
+	padding-right: 5px;
 }
 
-/*
-Description term containing information about the movie. Part of the overview section.
-*/
+#right {
+	float: right;
+	width: 250px;
+	background-color: #A2B964;
+	font-family: Arial, sans-serif;
+}
+
+#overview {
+	padding: 0px;
+}
+
+dl {
+	font-weight: bold;
+	margin-top: 0px;
+	margin-left: 10px;
+}
+
 dt {
-    font-weight: bold;
-    margin-top: 10pt;
-    margin-left: 10pt;
+	margin-top: 10px;
 }
 
-/*
-Unordered list containing external links. Part of the overview section.
-*/
-ul { /*Corresponds to links*/
-    list-style: none; /*removes bullets*/
-    padding-left: 0px; /* removes indentation*/
+ul {
+	list-style-type: none;
+	list-style-image: none;
+	padding: 0;
+	margin-left: 0;
+	margin-top: 0;
 }
 
-/*
-Bottom section of the page indicating the number of pages.
-*/
-#reviewCount {
-    background-color: #a2b964;
-    text-align: center;
-    padding: 5px; /*5px separate the edge of its text and the element's own outer edge*/
-    clear: both;
-    margin: 0; /*necessary to match the screen shot design*/
+dd, li {
+	line-height: 10pt;
 }
 
-/*
-Validator buttons outside the main section. Located at the bottom right side of the page.
-*/
-#w3c {
-    opacity: 0.5;
-    position: fixed;
-    bottom: 0px;
-    right: 0px;
+#footer {
+	clear: both;
+	text-align: center;
+}
+
+#validate {
+	position:fixed;
+	bottom: 0px;
+	right: 0px;
+	opacity: 0.5;
 }
