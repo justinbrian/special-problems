@@ -7,6 +7,7 @@ $page = isset($_GET['menu'])?$_GET['menu']:'movie';
 $page = isset($_GET['menu'])?$_GET['menu']:'movie1';
 $page = isset($_GET['menu'])?$_GET['menu']:'movie2';
 $page = isset($_GET['menu'])?$_GET['menu']:'movie3';
+$page = isset($_GET['menu'])?$_GET['menu']:'movie4';
 
 switch($page){
 	case 'movie':
@@ -29,7 +30,11 @@ switch($page){
 		$title = 'Teenage Mutant Ninja Turtles 2';
 		$content = 'movie.php?film=tmnt2';
 		break;
-
+	case 'movie4':
+		$movie = $_GET["film"];
+		$title = 'Joker';
+		$content = 'movie.php?film=joker';
+		break;
 }
 // The following html could be in a separate file and included, eg layout.php.
 ?>
