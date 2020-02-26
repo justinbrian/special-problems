@@ -1,2 +1,2 @@
 # CSC199 - Special Problems
-Individual projects.
+Individual web development projects.
